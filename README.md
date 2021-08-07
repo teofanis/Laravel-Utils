@@ -1,4 +1,4 @@
-# A bundle of helper functions to facilitate a better development experience from project to project.
+# A bundle of helpers and utilities to facilitate a better development experience from project to project.
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/teofanis/laravel-utils.svg?style=flat-square)](https://packagist.org/packages/teofanis/laravel-utils)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/teofanis/laravel-utils/run-tests?label=tests)](https://github.com/teofanis/laravel-utils/actions?query=workflow%3Arun-tests+branch%3Amain)
