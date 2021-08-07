@@ -7,5 +7,4 @@ use Teofanis\LaravelUtils\Traits\StringSupport;
 class Utilities
 {
     use StringSupport;
-
 }

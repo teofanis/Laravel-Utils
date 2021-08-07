@@ -5,7 +5,6 @@ namespace Teofanis\LaravelUtils;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-
 class LaravelUtilsServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
@@ -20,6 +19,6 @@ class LaravelUtilsServiceProvider extends PackageServiceProvider
 
     public function packageRegistered(): void
     {
-        $this->app->bind('utilities', fn() => new Utilities());
+        $this->app->bind('utilities', fn () => new Utilities());
     }
 }

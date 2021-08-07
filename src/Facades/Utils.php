@@ -2,7 +2,6 @@
 
 namespace Teofanis\LaravelUtils\Facades;
 
-use Teofanis\LaravelUtils\Utilities;
 use Illuminate\Support\Facades\Facade;
 
 /**
