@@ -2,10 +2,13 @@
 
 namespace Teofanis\LaravelUtils;
 
+use Illuminate\Support\Traits\Macroable;
+use Teofanis\LaravelUtils\Traits\ArraySupport;
+use Teofanis\LaravelUtils\Traits\StringSupport;
+
 class Utilities
 {
-    public function hello()
-    {
-        return "HELLO WORLD !";
-    }
+    use StringSupport;
+    use ArraySupport;
+    use Macroable;
 }
