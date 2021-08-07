@@ -2,6 +2,7 @@
 
 namespace Teofanis\LaravelUtils;
 
+use Teofanis\LaravelUtils\MacrosRegistar;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -21,5 +22,14 @@ class LaravelUtilsServiceProvider extends PackageServiceProvider
     public function packageRegistered(): void
     {
         $this->app->bind('utilities', fn() => new Utilities());
+    }
+
+    public function packageBooted(): void
+    {
+        collect((new MacrosRegistar())->macros())->each(function($class) {
+            $extender = app($class);
+            $base = $extender->getBaseClass();
+            $base::mixin($extender);
+        });
     }
 }
