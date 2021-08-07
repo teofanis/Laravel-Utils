@@ -11,5 +11,4 @@ class Utilities
     use StringSupport;
     use ArraySupport;
     use Macroable;
-
 }
