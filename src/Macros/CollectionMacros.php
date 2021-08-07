@@ -16,8 +16,8 @@ class CollectionMacros implements MacrosContract
     {
         return function ($keyName = null) {
             $keyName = $keyName ?? 'id' ?? 0;
-            return $this->mapWithKeys(fn($i) => [is_scalar($i) ? $i : $i[$keyName] => $i]);
+
+            return $this->mapWithKeys(fn ($i) => [is_scalar($i) ? $i : $i[$keyName] => $i]);
         };
     }
-
 }

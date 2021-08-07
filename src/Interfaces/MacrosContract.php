@@ -2,6 +2,7 @@
 
 namespace Teofanis\LaravelUtils\Interfaces;
 
-interface MacrosContract {
+interface MacrosContract
+{
     public function getBaseClass();
 }

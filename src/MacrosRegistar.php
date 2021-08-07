@@ -4,13 +4,12 @@ namespace Teofanis\LaravelUtils;
 
 use Teofanis\LaravelUtils\Macros\CollectionMacros;
 
-class MacrosRegistar {
-
+class MacrosRegistar
+{
     public function macros()
     {
         return [
             CollectionMacros::class,
         ];
     }
-
 }
