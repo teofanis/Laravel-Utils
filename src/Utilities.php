@@ -2,10 +2,10 @@
 
 namespace Teofanis\LaravelUtils;
 
+use Teofanis\LaravelUtils\Traits\StringSupport;
+
 class Utilities
 {
-    public function hello()
-    {
-        return "HELLO WORLD !";
-    }
+    use StringSupport;
+
 }

@@ -4,7 +4,7 @@ namespace Teofanis\LaravelUtils;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Teofanis\LaravelUtils\Commands\LaravelUtilsCommand;
+
 
 class LaravelUtilsServiceProvider extends PackageServiceProvider
 {
@@ -15,18 +15,11 @@ class LaravelUtilsServiceProvider extends PackageServiceProvider
          *
          * More info: https://github.com/spatie/laravel-package-tools
          */
-        $package
-            ->name('laravel-utils')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_laravel-utils_table')
-            ->hasCommand(LaravelUtilsCommand::class);
+        $package->name('laravel-utils');
     }
 
     public function packageRegistered(): void
     {
-        $this->app->bind('utilities', function ($app) {
-            return new Utilities();
-        });
+        $this->app->bind('utilities', fn() => new Utilities());
     }
 }
