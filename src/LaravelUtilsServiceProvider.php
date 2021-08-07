@@ -5,7 +5,6 @@ namespace Teofanis\LaravelUtils;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Teofanis\LaravelUtils\Commands\LaravelUtilsCommand;
-use Teofanis\LaravelUtils\Utilities;
 
 class LaravelUtilsServiceProvider extends PackageServiceProvider
 {
@@ -22,7 +21,6 @@ class LaravelUtilsServiceProvider extends PackageServiceProvider
             ->hasViews()
             ->hasMigration('create_laravel-utils_table')
             ->hasCommand(LaravelUtilsCommand::class);
-
     }
 
     public function packageRegistered(): void
