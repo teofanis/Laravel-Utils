@@ -1,6 +1,6 @@
 <?php
 
-namespace Teofanis\LaravelUtils\Traits;
+namespace Teofanis\LaravelUtils\Concerns;
 
 trait ArraySupport
 {

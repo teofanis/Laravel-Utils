@@ -3,12 +3,14 @@
 namespace Teofanis\LaravelUtils;
 
 use Illuminate\Support\Traits\Macroable;
-use Teofanis\LaravelUtils\Traits\ArraySupport;
-use Teofanis\LaravelUtils\Traits\StringSupport;
+use Teofanis\LaravelUtils\Concerns\ArraySupport;
+use Teofanis\LaravelUtils\Concerns\StringSupport;
+use Teofanis\LaravelUtils\Concerns\GenericHelpers;
 
 class Utilities
 {
     use StringSupport;
     use ArraySupport;
+    use GenericHelpers;
     use Macroable;
 }
