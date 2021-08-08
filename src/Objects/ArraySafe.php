@@ -2,10 +2,10 @@
 
 namespace Teofanis\LaravelUtils\Objects;
 
-use Iterator;
 use ArrayAccess;
 use ArrayIterator;
 use Illuminate\Support\Collection;
+use Iterator;
 
 class ArraySafe implements ArrayAccess, Iterator
 {
@@ -17,7 +17,7 @@ class ArraySafe implements ArrayAccess, Iterator
     {
         $this->default = $default;
         $this->iterator = new ArrayIterator();
-        foreach($items as $key => $item) {
+        foreach ($items as $key => $item) {
             $this->offsetSet($key, $item);
         }
         $this->items = $this->getItems();
@@ -25,14 +25,16 @@ class ArraySafe implements ArrayAccess, Iterator
 
     public function __call($method, $args)
     {
-        if(!method_exists($this, $method)) {
+        if (! method_exists($this, $method)) {
             $collection = collect($this->getItems());
-            if(method_exists($collection, $method) || $collection->hasMacro($method)) {
+            if (method_exists($collection, $method) || $collection->hasMacro($method)) {
                 $result = $collection->$method(...$args);
-                if(!is_null($result) && is_scalar($result)) {
+                if (! is_null($result) && is_scalar($result)) {
                     return $result;
                 }
-                if(is_array($result)) return $result;
+                if (is_array($result)) {
+                    return $result;
+                }
                 if($result instanceof Collection) {
                     $result = $result->toArray();
                 }
@@ -56,7 +58,7 @@ class ArraySafe implements ArrayAccess, Iterator
         return $this->default;
     }
 
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return $this->iterator->offsetExists($offset);
     }
@@ -66,19 +68,19 @@ class ArraySafe implements ArrayAccess, Iterator
         return $this->iterator->offsetExists($offset) ? $this->iterator->offsetGet($offset) : $this->getDefault();
     }
 
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         $this->iterator->offsetSet($offset, $value);
     }
 
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
-        if($this->iterator->offsetExists($offset)) {
+        if ($this->iterator->offsetExists($offset)) {
             $this->iterator->offsetUnset($offset);
         }
     }
 
-    public function next() : void
+    public function next(): void
     {
         $this->iterator->next();
     }
@@ -88,17 +90,17 @@ class ArraySafe implements ArrayAccess, Iterator
         return $this->iterator->key();
     }
 
-    public function valid() : bool
+    public function valid(): bool
     {
         return $this->iterator->valid();
     }
 
-    public function rewind() : void
+    public function rewind(): void
     {
         $this->iterator->rewind();
     }
 
-    public function count() : int
+    public function count(): int
     {
         return $this->iterator->count();
     }
@@ -107,5 +109,4 @@ class ArraySafe implements ArrayAccess, Iterator
     {
         return $this->iterator->current();
     }
-
 }
