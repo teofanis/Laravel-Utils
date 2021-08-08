@@ -5,16 +5,16 @@ namespace Teofanis\LaravelUtils\Concerns;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Blade;
 
-trait GenericHelpers {
-
-    function devMode($additonalDevEnvs = [])
+trait GenericHelpers
+{
+    public function devMode($additonalDevEnvs = [])
     {
         $additonalDevEnvs = array_merge($additonalDevEnvs, ['local', 'staging', 'testing']);
 
         return App::environment(...$additonalDevEnvs);
     }
 
-    function bladeCompile($someRandomViewName, array $args = [])
+    public function bladeCompile($someRandomViewName, array $args = [])
     {
         $compiled = Blade::compileString($someRandomViewName);
         ob_start() and extract($args, EXTR_SKIP);
@@ -23,13 +23,15 @@ trait GenericHelpers {
             eval('?>' . $compiled);
         } catch (\Exception $e) {
             ob_get_clean();
+
             throw $e;
         }
         $content = ob_get_clean();
+
         return $content;
     }
 
-    function hydrateAndCompile($subject, $context = [])
+    public function hydrateAndCompile($subject, $context = [])
     {
         $matches = [];
         $new = $subject;
@@ -44,13 +46,14 @@ trait GenericHelpers {
                 $new = str_replace($txt, $val, $new);
             }
         }
+
         return $this->bladeCompile($new, $context);
     }
 
-    function dumpToString(...$args)
+    public function dumpToString(...$args)
     {
         $orgVarDumperValue = $_SERVER['VAR_DUMPER_FORMAT'] ?? null;
-        $_SERVER['VAR_DUMPER_FORMAT']='html';
+        $_SERVER['VAR_DUMPER_FORMAT'] = 'html';
 
         ob_start();
         dump(...$args);
@@ -60,8 +63,9 @@ trait GenericHelpers {
         if ($orgVarDumperValue === null) {
             unset($_SERVER['VAR_DUMPER_FORMAT']);
         } else {
-            $_SERVER['VAR_DUMPER_FORMAT']=$orgVarDumperValue;
+            $_SERVER['VAR_DUMPER_FORMAT'] = $orgVarDumperValue;
         }
+
         return $content;
     }
 }

@@ -35,9 +35,10 @@ class ArraySafe implements ArrayAccess, Iterator
                 if (is_array($result)) {
                     return $result;
                 }
-                if($result instanceof Collection) {
+                if ($result instanceof Collection) {
                     $result = $result->toArray();
                 }
+
                 return new static($result, $this->default());
             }
         }

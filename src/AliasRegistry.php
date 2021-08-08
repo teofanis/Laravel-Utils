@@ -2,9 +2,8 @@
 
 namespace Teofanis\LaravelUtils;
 
-
-class AliasRegistry {
-
+class AliasRegistry
+{
     private static $store = [];
     private static $maker = "";
     private static $declaration = '
@@ -16,23 +15,28 @@ class AliasRegistry {
         }
     ';
 
-    private static function safeName($name) {
-        $name = preg_replace('/[^a-zA-Z0-9_]/',"",$name);
-        $name = substr($name,0,64);
+    private static function safeName($name)
+    {
+        $name = preg_replace('/[^a-zA-Z0-9_]/', "", $name);
+        $name = substr($name, 0, 64);
+
         return $name;
     }
 
-    public static function add($name,$func) {
+    public static function add($name, $func)
+    {
         $name = self::safeName($name);
         self::$store[$name] = $func;
-        self::$maker.=sprintf(self::$declaration,$name,__CLASS__);
+        self::$maker .= sprintf(self::$declaration, $name, __CLASS__);
     }
 
-    public static function get($name) {
+    public static function get($name)
+    {
         return self::$store[$name];
     }
 
-    public static function make() {
+    public static function make()
+    {
         return self::$maker;
     }
 }

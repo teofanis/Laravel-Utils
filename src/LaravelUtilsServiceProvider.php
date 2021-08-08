@@ -3,7 +3,6 @@
 namespace Teofanis\LaravelUtils;
 
 use Spatie\LaravelPackageTools\Package;
-use Teofanis\LaravelUtils\Objects\ArraySafe;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class LaravelUtilsServiceProvider extends PackageServiceProvider

@@ -6,7 +6,6 @@ use Teofanis\LaravelUtils\Objects\ArraySafe;
 
 class ArraySafeTest extends TestCase
 {
-
     /** @test */
     public function test_it_has_a_class_alias()
     {
@@ -38,11 +37,11 @@ class ArraySafeTest extends TestCase
         $this->assertTrue($assocArray->two === '2');
     }
 
-     /** @test */
+    /** @test */
     public function test_it_can_be_treated_as_a_laravel_collection()
     {
         $assocArray = new ArraySafe(['one' => '1', 'two' => '2', 'three' => 3]);
-        $result = $assocArray->filter(fn($v, $k) => is_int($v));
+        $result = $assocArray->filter(fn ($v, $k) => is_int($v));
         $this->assertTrue($result instanceof ArraySafe);
         $this->assertTrue($result->isEmpty() === false);
         $this->assertTrue($result->count() === 1);
