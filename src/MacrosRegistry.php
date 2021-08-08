@@ -4,7 +4,7 @@ namespace Teofanis\LaravelUtils;
 
 use Teofanis\LaravelUtils\Macros\CollectionMacros;
 
-class MacrosRegistar
+class MacrosRegistry
 {
     public function macros()
     {

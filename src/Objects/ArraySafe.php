@@ -11,6 +11,7 @@ class ArraySafe implements ArrayAccess, Iterator
 {
     private $iterator;
     private $default;
+    public $items;
 
     public function __construct(iterable $items = [], $default = null)
     {
@@ -19,6 +20,7 @@ class ArraySafe implements ArrayAccess, Iterator
         foreach($items as $key => $item) {
             $this->offsetSet($key, $item);
         }
+        $this->items = $this->getItems();
     }
 
     public function __call($method, $args)
@@ -31,9 +33,10 @@ class ArraySafe implements ArrayAccess, Iterator
                     return $result;
                 }
                 if(is_array($result)) return $result;
-                if($result instanceof Collection) return $result->toArray();
-                return null;
-                // return (!is_null($result) && is_scalar($result) ? $result : ($result ? $result->toArray() : null));
+                if($result instanceof Collection) {
+                    $result = $result->toArray();
+                }
+                return new static($result, $this->default());
             }
         }
     }
