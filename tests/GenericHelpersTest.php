@@ -4,8 +4,8 @@ namespace Teofanis\LaravelUtils\Tests;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Traits\Macroable;
-use Teofanis\LaravelUtils\Facades\Utils;
 use Teofanis\LaravelUtils\Concerns\ArraySupport;
+use Teofanis\LaravelUtils\Facades\Utils;
 
 class GenericHelpersTest extends TestCase
 {
@@ -33,13 +33,13 @@ class GenericHelpersTest extends TestCase
     /** @test */
     public function test_uses_trait()
     {
-       $collection_is_macroable = Utils::usesTrait(Macroable::class, Collection::class);
-       $this->assertTrue($collection_is_macroable);
+        $collection_is_macroable = Utils::usesTrait(Macroable::class, Collection::class);
+        $this->assertTrue($collection_is_macroable);
 
-       $collection_is_macroable = Utils::usesTrait(Macroable::class, collect([]));
-       $this->assertTrue($collection_is_macroable);
+        $collection_is_macroable = Utils::usesTrait(Macroable::class, collect([]));
+        $this->assertTrue($collection_is_macroable);
 
-       $collection_is_using_array_support = Utils::usesTrait(ArraySupport::class, Collection::class);
-       $this->assertFalse($collection_is_using_array_support);
+        $collection_is_using_array_support = Utils::usesTrait(ArraySupport::class, Collection::class);
+        $this->assertFalse($collection_is_using_array_support);
     }
 }
