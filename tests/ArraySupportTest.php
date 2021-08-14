@@ -8,7 +8,7 @@ class ArraySupportTest extends TestCase
 {
     protected $array;
 
-    public function setUp() : void
+    public function setUp(): void
     {
         parent::setUp();
         $this->array = [
@@ -16,13 +16,13 @@ class ArraySupportTest extends TestCase
             'key' => [
                 'test' => 'something',
                 'key' => 'test2',
-                'test3' => ['key'=>'deep'],
+                'test3' => ['key' => 'deep'],
             ],
             'nokey' => 'somekey',
             'test3' => [
-                'key' => 'another'
+                'key' => 'another',
             ],
-            'last' => 'key'
+            'last' => 'key',
         ];
     }
 
@@ -35,13 +35,13 @@ class ArraySupportTest extends TestCase
             'newKey' => [
                 'test' => 'something',
                 'newKey' => 'test2',
-                'test3' => ['newKey'=>'deep'],
+                'test3' => ['newKey' => 'deep'],
             ],
             'nokey' => 'somekey',
             'test3' => [
-                'newKey' => 'another'
+                'newKey' => 'another',
             ],
-            'last' => 'key'
+            'last' => 'key',
         ];
 
         $result = Utils::replaceKeys('key', 'newKey', $array);
@@ -56,19 +56,19 @@ class ArraySupportTest extends TestCase
             'deepkey' => [
                 'test' => 'something',
                 'deepkey' => 'test2',
-                'test3' => ['deepkey'=>'deep'],
+                'test3' => ['deepkey' => 'deep'],
             ],
             'anotherReplacedKey' => 'somekey',
             'test3' => [
-                'deepkey' => 'another'
+                'deepkey' => 'another',
             ],
-            'ops' => 'key'
+            'ops' => 'key',
         ];
         $keysToReplace = [
             'someKey' => 'newReplacedKey',
             'nokey' => 'anotherReplacedKey',
             'last' => 'ops',
-            'key' => 'deepkey'
+            'key' => 'deepkey',
         ];
         $result = Utils::replaceMultipleKeys($keysToReplace, $array);
         $this->assertEquals($expected, $result);
@@ -83,13 +83,13 @@ class ArraySupportTest extends TestCase
             'item.key' => [
                 'test' => 'something',
                 'key' => 'test2',
-                'test3' => ['key'=>'deep'],
+                'test3' => ['key' => 'deep'],
             ],
             'item.nokey' => 'somekey',
             'item.test3' => [
-                'key' => 'another'
+                'key' => 'another',
             ],
-            'item.last' => 'key'
+            'item.last' => 'key',
         ];
 
         $result = Utils::prefixKeys($keyPrefix, $array);
@@ -105,16 +105,16 @@ class ArraySupportTest extends TestCase
             'item.key' => [
                 'item.test' => 'something',
                 'item.key' => 'test2',
-                'item.test3' => ['item.key'=>'deep'],
+                'item.test3' => ['item.key' => 'deep'],
             ],
             'item.nokey' => 'somekey',
             'item.test3' => [
-                'item.key' => 'another'
+                'item.key' => 'another',
             ],
-            'item.last' => 'key'
+            'item.last' => 'key',
         ];
 
-        $result = Utils::prefixKeys($keyPrefix, $array,true);
+        $result = Utils::prefixKeys($keyPrefix, $array, true);
         $this->assertEquals($expected, $result);
     }
 
@@ -127,13 +127,13 @@ class ArraySupportTest extends TestCase
             'key' => [
                 'test' => 'something',
                 'key' => 'test2',
-                'test3' => ['key'=>'deep'],
+                'test3' => ['key' => 'deep'],
             ],
             'nokey' => 'somekey',
             'test3' => [
-                'key' => 'another'
+                'key' => 'another',
             ],
-            'last' => 'key'
+            'last' => 'key',
         ];
         $result = Utils::removeKeyPrefixes($prefix, $array);
         $this->assertEquals($expected, $result);
@@ -148,13 +148,13 @@ class ArraySupportTest extends TestCase
             'key' => [
                 'test' => 'something',
                 'key' => 'test2',
-                'test3' => ['key'=>'deep'],
+                'test3' => ['key' => 'deep'],
             ],
             'nokey' => 'somekey',
             'test3' => [
-                'key' => 'another'
+                'key' => 'another',
             ],
-            'last' => 'key'
+            'last' => 'key',
         ];
         $result = Utils::removeKeyPrefixes($prefix, $array, true);
         $this->assertEquals($expected, $result);
