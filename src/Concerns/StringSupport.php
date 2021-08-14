@@ -90,6 +90,18 @@ trait StringSupport
         return $this->endsWith($needle, $haystack) ? substr($haystack, 0, -strlen($needle)) : $haystack;
     }
 
+    public function random_str($length = 32)
+    {
+        $length = $length <= 0 ? 32 : $length;
+        $characters = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        $tokens = [];
+        $max = mb_strlen($characters, '8bit') - 1;
+        for($i =0; $i < $length; ++$i) {
+            $tokens[] = $characters[random_int(0, $max)];
+        }
+        return implode('', $tokens);
+    }
+
     // function extractFirstToken(&$haystack, $delimiter = ".")
     // {
     //     $token = $this->getToken($haystack, 1, $delimiter);
