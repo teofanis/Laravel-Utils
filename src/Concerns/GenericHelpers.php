@@ -2,6 +2,7 @@
 
 namespace Teofanis\LaravelUtils\Concerns;
 
+use ReflectionClass;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Blade;
 
@@ -67,5 +68,11 @@ trait GenericHelpers
         }
 
         return $content;
+    }
+
+    function usesTrait($trait, $objectOrClass)
+    {
+        $traitsList = array_keys((new \ReflectionClass($objectOrClass))->getTraits());
+        return in_array($trait, $traitsList);
     }
 }
