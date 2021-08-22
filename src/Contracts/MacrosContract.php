@@ -1,6 +1,6 @@
 <?php
 
-namespace Teofanis\LaravelUtils\Interfaces;
+namespace Teofanis\LaravelUtils\Contracts;
 
 interface MacrosContract
 {
