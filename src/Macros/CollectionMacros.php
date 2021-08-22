@@ -3,7 +3,7 @@
 namespace Teofanis\LaravelUtils\Macros;
 
 use Illuminate\Support\Collection;
-use Teofanis\LaravelUtils\Interfaces\MacrosContract;
+use Teofanis\LaravelUtils\Contracts\MacrosContract;
 
 class CollectionMacros implements MacrosContract
 {
